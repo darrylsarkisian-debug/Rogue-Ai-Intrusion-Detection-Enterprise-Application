@@ -1,0 +1,70 @@
+[
+  {
+    "host": "FIN-PC-01",
+    "processes": [
+      {
+        "name": "excel.exe",
+        "cmdline": "excel.exe"
+      }
+    ],
+    "listening_ports": [
+      135,
+      445
+    ],
+    "large_files": [],
+    "gpu_percent": 3
+  },
+  {
+    "host": "HR-PC-02",
+    "processes": [
+      {
+        "name": "chrome.exe",
+        "cmdline": "chrome.exe"
+      }
+    ],
+    "listening_ports": [
+      135
+    ],
+    "large_files": [],
+    "gpu_percent": 1
+  },
+  {
+    "host": "DEV-LAPTOP-07",
+    "processes": [
+      {
+        "name": "ollama.exe",
+        "cmdline": "ollama serve"
+      },
+      {
+        "name": "node.exe",
+        "cmdline": "node npx @modelcontextprotocol/server-filesystem C:\\Users"
+      }
+    ],
+    "listening_ports": [
+      135,
+      11434,
+      3000
+    ],
+    "large_files": [
+      {
+        "path": "C:\\Users\\dev\\.ollama\\llama3-8b.gguf",
+        "mb": 4900
+      }
+    ],
+    "gpu_percent": 88
+  },
+  {
+    "host": "SRV-APP-02",
+    "processes": [
+      {
+        "name": "python.exe",
+        "cmdline": "python worker.py"
+      }
+    ],
+    "listening_ports": [
+      443
+    ],
+    "large_files": [],
+    "gpu_percent": 2
+  }
+]

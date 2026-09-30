@@ -1,0 +1,38 @@
+{
+  "version": "2026.09.30",
+  "note": "Product asset. Version this file and push updates to all client sensors at once.",
+  "sanctioned_default": [],
+  "domains": {
+    "chat.openai.com": "ChatGPT",
+    "chatgpt.com": "ChatGPT",
+    "api.openai.com": "OpenAI API",
+    "claude.ai": "Claude",
+    "api.anthropic.com": "Anthropic API",
+    "gemini.google.com": "Gemini",
+    "generativelanguage.googleapis.com": "Gemini API",
+    "copilot.microsoft.com": "Copilot",
+    "chat.deepseek.com": "DeepSeek",
+    "api.deepseek.com": "DeepSeek API",
+    "perplexity.ai": "Perplexity",
+    "www.perplexity.ai": "Perplexity",
+    "poe.com": "Poe",
+    "character.ai": "Character.AI",
+    "huggingface.co": "Hugging Face",
+    "api.mistral.ai": "Mistral API",
+    "chat.mistral.ai": "Mistral",
+    "grok.com": "Grok",
+    "x.ai": "Grok",
+    "api.x.ai": "Grok API",
+    "api.groq.com": "Groq API",
+    "api.together.xyz": "Together AI",
+    "openrouter.ai": "OpenRouter",
+    "cursor.sh": "Cursor",
+    "api.cursor.sh": "Cursor",
+    "github.copilot.com": "GitHub Copilot"
+  },
+  "api_key_patterns": {
+    "openai": "sk-[A-Za-z0-9_-]{20,}",
+    "anthropic": "sk-ant-[A-Za-z0-9_-]{20,}",
+    "google": "AIza[0-9A-Za-z_-]{35}"
+  }
+}

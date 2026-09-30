@@ -1,0 +1,30 @@
+{
+  "version": "2026.09.30",
+  "local_model_ports": {
+    "11434": "Ollama",
+    "1234": "LM Studio",
+    "8080": "llama.cpp server (verify)",
+    "5000": "text-generation-webui (verify)",
+    "7860": "Gradio / ComfyUI / WebUI (verify)"
+  },
+  "mcp_ports_hint": ["3000", "6274", "6277"],
+  "process_signatures": [
+    {"name": "ollama", "kind": "local_model_runtime", "severity": "high"},
+    {"name": "lm studio", "kind": "local_model_runtime", "severity": "high"},
+    {"name": "llama-server", "kind": "local_model_runtime", "severity": "high"},
+    {"name": "llama.cpp", "kind": "local_model_runtime", "severity": "high"},
+    {"name": "koboldcpp", "kind": "local_model_runtime", "severity": "high"},
+    {"cmdline_contains": "@modelcontextprotocol", "kind": "mcp_server", "severity": "high"},
+    {"cmdline_contains": "mcp-server", "kind": "mcp_server", "severity": "high"},
+    {"cmdline_contains": "langchain", "kind": "agent_framework", "severity": "medium"},
+    {"cmdline_contains": "autogen", "kind": "agent_framework", "severity": "medium"},
+    {"cmdline_contains": "crewai", "kind": "agent_framework", "severity": "medium"},
+    {"cmdline_contains": "openclaw", "kind": "autonomous_agent", "severity": "high"},
+    {"name": "claude", "kind": "coding_agent", "severity": "medium"},
+    {"name": "aider", "kind": "coding_agent", "severity": "medium"},
+    {"name": "codex", "kind": "coding_agent", "severity": "medium"}
+  ],
+  "model_file_extensions": [".gguf", ".safetensors", ".ggml", ".onnx"],
+  "model_file_min_mb": 500,
+  "gpu_sustained_percent": 70
+}
