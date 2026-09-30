@@ -19,7 +19,8 @@ if (-not (Test-Path ".git")) {
   git init -b main
   git remote add origin $Remote
 } else {
-  git remote set-url origin $Remote
+  git remote remove origin 2>$null
+  git remote add origin $Remote
 }
 
 git add -A

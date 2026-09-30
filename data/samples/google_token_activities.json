@@ -1,0 +1,71 @@
+{
+  "items": [
+    {
+      "id": {
+        "time": "2026-09-23T09:00:00Z",
+        "applicationName": "token"
+      },
+      "actor": {
+        "email": "dave@contoso.example"
+      },
+      "ipAddress": "198.51.100.20",
+      "events": [
+        {
+          "type": "token",
+          "name": "authorize",
+          "parameters": [
+            {
+              "name": "app_name",
+              "value": "Zoom"
+            },
+            {
+              "name": "client_id",
+              "value": "zoom-client-1.apps.example"
+            },
+            {
+              "name": "scope",
+              "multiValue": [
+                "https://www.googleapis.com/auth/calendar.freebusy",
+                "https://www.googleapis.com/auth/userinfo.email"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": {
+        "time": "2026-09-24T15:00:00Z",
+        "applicationName": "token"
+      },
+      "actor": {
+        "email": "erin@contoso.example"
+      },
+      "ipAddress": "198.51.100.20",
+      "events": [
+        {
+          "type": "token",
+          "name": "authorize",
+          "parameters": [
+            {
+              "name": "app_name",
+              "value": "Cursor"
+            },
+            {
+              "name": "client_id",
+              "value": "cursor-client-1.apps.example"
+            },
+            {
+              "name": "scope",
+              "multiValue": [
+                "https://www.googleapis.com/auth/gmail.readonly",
+                "https://www.googleapis.com/auth/drive",
+                "https://www.googleapis.com/auth/userinfo.email"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

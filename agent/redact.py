@@ -26,7 +26,8 @@ class Pseudonymizer:
 
     def redact_text(self, text: str, known: dict[str, str]) -> str:
         """known maps real identifier -> prefix (user, host)."""
-        for real, prefix in known.items():
+        # longest identifiers first, so 'alice@corp.com' is not half-eaten by 'alice'
+        for real, prefix in sorted(known.items(), key=lambda kv: -len(kv[0])):
             text = text.replace(real, self.alias(real, prefix))
         return IP_RE.sub(lambda m: self.alias(m.group(0), "ip"), text)
 

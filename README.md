@@ -32,6 +32,11 @@ pytest                           # all three goals must fire; benign users must 
 | `sim/generate_data.py` | Repeatable simulated client data |
 | `docs/` | Plan, coverage limits, pitch material |
 
+## Cloud audit loaders (M365 / Google)
+
+`loaders/` turns Microsoft 365 and Google Workspace audit exports into detector-ready tables;
+`detectors/oauth_apps.py` flags unapproved AI apps and agents that users connected. See `docs/CLOUD_LOADERS.md`.
+
 ## Honest limits (put these in every proposal)
 
 No coverage for personal phones, home networks, off-network laptops, or encrypted

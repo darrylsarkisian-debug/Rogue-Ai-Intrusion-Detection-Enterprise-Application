@@ -1,0 +1,206 @@
+[
+  {
+    "CreationTime": "2026-09-22T11:00:00Z",
+    "Operation": "Consent to application.",
+    "UserId": "alice@contoso.example",
+    "ClientIP": "198.51.100.11",
+    "Workload": "AzureActiveDirectory",
+    "Target": [
+      {
+        "ID": "ServicePrincipal_11111111-aaaa-4aaa-8aaa-111111111111",
+        "Type": 2
+      },
+      {
+        "ID": "Adobe Acrobat",
+        "Type": 1
+      }
+    ],
+    "ModifiedProperties": [
+      {
+        "Name": "ConsentContext.IsAdminConsent",
+        "NewValue": "False",
+        "OldValue": ""
+      },
+      {
+        "Name": "ConsentAction.Permissions",
+        "NewValue": "[[ClientId = 11111111-aaaa-4aaa-8aaa-111111111111, ConsentType = Principal, Scope = Files.Read User.Read, StartTime = 2026-09-22T11:00:00Z]]",
+        "OldValue": ""
+      },
+      {
+        "Name": "TargetId.ServicePrincipalNames",
+        "NewValue": "Adobe Acrobat",
+        "OldValue": ""
+      }
+    ]
+  },
+  {
+    "CreationTime": "2026-09-23T10:00:00Z",
+    "Operation": "Consent to application.",
+    "UserId": "bob@contoso.example",
+    "ClientIP": "198.51.100.12",
+    "Workload": "AzureActiveDirectory",
+    "Target": [
+      {
+        "ID": "ServicePrincipal_11111111-aaaa-4aaa-8aaa-111111111111",
+        "Type": 2
+      },
+      {
+        "ID": "Adobe Acrobat",
+        "Type": 1
+      }
+    ],
+    "ModifiedProperties": [
+      {
+        "Name": "ConsentContext.IsAdminConsent",
+        "NewValue": "False",
+        "OldValue": ""
+      },
+      {
+        "Name": "ConsentAction.Permissions",
+        "NewValue": "[[ClientId = 11111111-aaaa-4aaa-8aaa-111111111111, ConsentType = Principal, Scope = Files.Read User.Read, StartTime = 2026-09-23T10:00:00Z]]",
+        "OldValue": ""
+      },
+      {
+        "Name": "TargetId.ServicePrincipalNames",
+        "NewValue": "Adobe Acrobat",
+        "OldValue": ""
+      }
+    ]
+  },
+  {
+    "CreationTime": "2026-09-23T12:00:00Z",
+    "Operation": "Consent to application.",
+    "UserId": "frank@contoso.example",
+    "ClientIP": "198.51.100.15",
+    "Workload": "AzureActiveDirectory",
+    "Target": [
+      {
+        "ID": "ServicePrincipal_22222222-bbbb-4bbb-8bbb-222222222222",
+        "Type": 2
+      },
+      {
+        "ID": "Fireflies.ai Notetaker",
+        "Type": 1
+      }
+    ],
+    "ModifiedProperties": [
+      {
+        "Name": "ConsentContext.IsAdminConsent",
+        "NewValue": "False",
+        "OldValue": ""
+      },
+      {
+        "Name": "ConsentAction.Permissions",
+        "NewValue": "[[ClientId = 22222222-bbbb-4bbb-8bbb-222222222222, ConsentType = Principal, Scope = Mail.Read Files.Read.All Calendars.Read offline_access User.Read, StartTime = 2026-09-23T12:00:00Z]]",
+        "OldValue": ""
+      },
+      {
+        "Name": "TargetId.ServicePrincipalNames",
+        "NewValue": "Fireflies.ai Notetaker",
+        "OldValue": ""
+      }
+    ]
+  },
+  {
+    "CreationTime": "2026-09-24T13:00:00Z",
+    "Operation": "Consent to application.",
+    "UserId": "carol@contoso.example",
+    "ClientIP": "198.51.100.20",
+    "Workload": "AzureActiveDirectory",
+    "Target": [
+      {
+        "ID": "ServicePrincipal_22222222-bbbb-4bbb-8bbb-222222222222",
+        "Type": 2
+      },
+      {
+        "ID": "Fireflies.ai Notetaker",
+        "Type": 1
+      }
+    ],
+    "ModifiedProperties": [
+      {
+        "Name": "ConsentContext.IsAdminConsent",
+        "NewValue": "False",
+        "OldValue": ""
+      },
+      {
+        "Name": "ConsentAction.Permissions",
+        "NewValue": "[[ClientId = 22222222-bbbb-4bbb-8bbb-222222222222, ConsentType = Principal, Scope = Calendars.Read User.Read, StartTime = 2026-09-24T13:00:00Z]]",
+        "OldValue": ""
+      },
+      {
+        "Name": "TargetId.ServicePrincipalNames",
+        "NewValue": "Fireflies.ai Notetaker",
+        "OldValue": ""
+      }
+    ]
+  },
+  {
+    "CreationTime": "2026-09-25T13:00:00Z",
+    "Operation": "Consent to application.",
+    "UserId": "hank@contoso.example",
+    "ClientIP": "198.51.100.21",
+    "Workload": "AzureActiveDirectory",
+    "Target": [
+      {
+        "ID": "ServicePrincipal_22222222-bbbb-4bbb-8bbb-222222222222",
+        "Type": 2
+      },
+      {
+        "ID": "Fireflies.ai Notetaker",
+        "Type": 1
+      }
+    ],
+    "ModifiedProperties": [
+      {
+        "Name": "ConsentContext.IsAdminConsent",
+        "NewValue": "False",
+        "OldValue": ""
+      },
+      {
+        "Name": "ConsentAction.Permissions",
+        "NewValue": "[[ClientId = 22222222-bbbb-4bbb-8bbb-222222222222, ConsentType = Principal, Scope = Calendars.Read User.Read, StartTime = 2026-09-25T13:00:00Z]]",
+        "OldValue": ""
+      },
+      {
+        "Name": "TargetId.ServicePrincipalNames",
+        "NewValue": "Fireflies.ai Notetaker",
+        "OldValue": ""
+      }
+    ]
+  },
+  {
+    "CreationTime": "2026-09-26T11:00:00Z",
+    "Operation": "Consent to application.",
+    "UserId": "admin@contoso.example",
+    "ClientIP": "198.51.100.30",
+    "Workload": "AzureActiveDirectory",
+    "Target": [
+      {
+        "ID": "ServicePrincipal_33333333-cccc-4ccc-8ccc-333333333333",
+        "Type": 2
+      },
+      {
+        "ID": "ChatGPT Mail Connector",
+        "Type": 1
+      }
+    ],
+    "ModifiedProperties": [
+      {
+        "Name": "ConsentContext.IsAdminConsent",
+        "NewValue": "True",
+        "OldValue": ""
+      },
+      {
+        "Name": "ConsentAction.Permissions",
+        "NewValue": "[[ClientId = 33333333-cccc-4ccc-8ccc-333333333333, ConsentType = AllPrincipals, Scope = Mail.ReadWrite Mail.Send offline_access, StartTime = 2026-09-26T11:00:00Z]]",
+        "OldValue": ""
+      },
+      {
+        "Name": "TargetId.ServicePrincipalNames",
+        "NewValue": "ChatGPT Mail Connector",
+        "OldValue": ""
+      }
+    ]
+  }
+]

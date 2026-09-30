@@ -5,3 +5,6 @@ audit.jsonl
 data/report.json
 *.env
 .env
+data/real/
+data/cloud_auth_log.csv
+data/oauth_grants.csv

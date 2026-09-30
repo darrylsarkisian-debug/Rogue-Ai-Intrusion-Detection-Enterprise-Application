@@ -1,0 +1,38 @@
+{
+  "version": "2026.09.30",
+  "note": "Product asset. Name patterns, not vendor IDs: extend from real tenant data as you see it. Patterns are case-insensitive regexes matched against the app display name.",
+  "ai_app_patterns": [
+    "chatgpt", "openai", "\\bgpt\\b", "claude", "anthropic", "gemini", "copilot",
+    "perplexity", "deepseek", "mistral", "\\bgrok\\b", "cursor", "codeium", "tabnine",
+    "otter\\.ai", "\\botter\\b", "fireflies", "read\\.ai", "fathom", "tl;?dv", "grain",
+    "notion ai", "jasper", "\\bmcp\\b", "\\bagent\\b", "assistant", "langchain",
+    "zapier ai", "\\bai\\b"
+  ],
+  "risky_scopes": {
+    "m365": {
+      "prefixes": ["Mail.", "Files.", "Sites.", "Calendars.", "Contacts.", "Notes.",
+                   "Chat.", "ChannelMessage.", "OnlineMeeting", "Directory.", "Group.",
+                   "Team", "full_access_as_app", "EWS.", "Tasks."],
+      "also_risky": ["User.Read.All", "User.ReadWrite.All", "Application.ReadWrite.All",
+                     "RoleManagement.ReadWrite.Directory"],
+      "safe_exact": ["User.Read", "openid", "profile", "email", "offline_access"]
+    },
+    "google": {
+      "prefixes": ["https://mail.google.com/", "https://www.googleapis.com/auth/gmail.",
+                   "https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/calendar",
+                   "https://www.googleapis.com/auth/contacts", "https://www.googleapis.com/auth/documents",
+                   "https://www.googleapis.com/auth/spreadsheets",
+                   "https://www.googleapis.com/auth/admin."],
+      "also_risky": [],
+      "safe_exact": ["openid", "email", "profile",
+                     "https://www.googleapis.com/auth/userinfo.email",
+                     "https://www.googleapis.com/auth/userinfo.profile",
+                     "https://www.googleapis.com/auth/drive.file",
+                     "https://www.googleapis.com/auth/drive.appdata",
+                     "https://www.googleapis.com/auth/calendar.freebusy"]
+    }
+  },
+  "persistence_scopes": ["offline_access"],
+  "spread_min_users": 3,
+  "spread_window_days": 7
+}
