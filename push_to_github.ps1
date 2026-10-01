@@ -19,8 +19,9 @@ if (-not (Test-Path ".git")) {
   git init -b main
   git remote add origin $Remote
 } else {
-  git remote remove origin 2>$null
-  git remote add origin $Remote
+  $current = git remote get-url origin 2>$null
+  if (-not $current) { git remote add origin $Remote }
+  elseif ($current -ne $Remote) { git remote set-url origin $Remote }
 }
 
 git add -A
@@ -29,6 +30,8 @@ if ($LASTEXITCODE -eq 0) { Write-Host "Nothing new to commit."; exit 0 }
 
 git commit -m $Message
 # Pull first in case the repo already has a README/license commit
-git pull origin main --allow-unrelated-histories --no-edit 2>$null
-git push -u origin main
+$ErrorActionPreference = "Continue"   # git writes progress to stderr; don't treat it as failure
+git pull origin main --allow-unrelated-histories --no-edit 2>&1 | Out-Null
+$ErrorActionPreference = "Stop"
+git push --set-upstream origin main
 Write-Host "Pushed to $Remote"
