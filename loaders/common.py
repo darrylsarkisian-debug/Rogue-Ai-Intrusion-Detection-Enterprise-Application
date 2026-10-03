@@ -13,6 +13,8 @@ def to_ts(value) -> str:
     if value in (None, ""):
         return ""
     s = str(value).strip()
+    # Entra emits 7-digit fractional seconds; Python 3.10 fromisoformat needs exactly 3 or 6.
+    s = re.sub(r"\.(\d+)", lambda m: "." + m.group(1)[:6].ljust(6, "0"), s, count=1)
     try:
         dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
     except ValueError:
@@ -27,6 +29,31 @@ def to_ts(value) -> str:
     if dt.tzinfo is not None:
         dt = dt.astimezone(timezone.utc).replace(tzinfo=None)
     return dt.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def to_ts_us(value) -> str:
+    """Like to_ts, but keeps sub-second precision when the source has it.
+
+    Sign-in timestamps feed automation_speed's gap-timing math (median gap,
+    coefficient of variation): to_ts's whole-second rounding collapses any
+    burst faster than ~1 attempt/sec to a 0.00s median, which still crosses
+    the AUT-001 threshold but destroys the CV signal that separates a
+    uniform machine-speed burst from noisy real traffic. to_ts itself is
+    left as-is (whole seconds) because consent/grant correlation only needs
+    second-level ordering, and other code and tests depend on that rounding.
+    """
+    if value in (None, ""):
+        return ""
+    s = str(value).strip()
+    s2 = re.sub(r"\.(\d+)", lambda m: "." + m.group(1)[:6].ljust(6, "0"), s, count=1)
+    try:
+        dt = datetime.fromisoformat(s2.replace("Z", "+00:00"))
+    except ValueError:
+        return to_ts(value)
+    if dt.tzinfo is not None:
+        dt = dt.astimezone(timezone.utc).replace(tzinfo=None)
+    return dt.isoformat(sep=" ", timespec="microseconds") if dt.microsecond else \
+        dt.strftime("%Y-%m-%d %H:%M:%S")
 
 
 def clean_ip(value) -> str:

@@ -8,3 +8,4 @@ data/report.json
 data/real/
 data/cloud_auth_log.csv
 data/oauth_grants.csv
+reports/

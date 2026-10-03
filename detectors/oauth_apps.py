@@ -31,6 +31,29 @@ def _truthy(v) -> bool:
     return str(v).strip().lower() in {"true", "1", "yes"}
 
 
+def _collapse_repeats(g: pd.DataFrame) -> pd.DataFrame:
+    """A user re-consenting to the same app (retries, added scopes) is one exposure, not several.
+    Keep the first grant time and the union of scopes, per (user, app, platform, admin-vs-user)."""
+    if g.empty:
+        return g
+    g = g.copy()
+    g["_admin"] = g.admin_consent.map(_truthy)
+    g = g.sort_values("ts")
+
+    def union(col):
+        seen: dict[str, None] = {}
+        for v in col:
+            for sc in str(v).split():
+                seen.setdefault(sc)
+        return " ".join(seen)
+
+    out = g.groupby(["user", "app_name", "platform", "_admin"], sort=False, as_index=False).agg(
+        ts=("ts", "first"), app_id=("app_id", "first"), scopes=("scopes", union),
+        src_ip=("src_ip", "first"))
+    out["admin_consent"] = out["_admin"]
+    return out.drop(columns="_admin")
+
+
 def detect(grants: pd.DataFrame, approved_apps: set[str] | None = None) -> list[Finding]:
     cfg = load_json("oauth_apps.json")
     ai_re = re.compile("|".join(cfg["ai_app_patterns"]), re.IGNORECASE)
@@ -42,6 +65,7 @@ def detect(grants: pd.DataFrame, approved_apps: set[str] | None = None) -> list[
     g = grants.copy()
     g["ts"] = pd.to_datetime(g["ts"])
     g = g[~(g.app_name.str.lower().isin(approved) | g.app_id.str.lower().isin(approved))]
+    g = _collapse_repeats(g)
 
     for _, r in g.iterrows():
         scopes = str(r.scopes).split() if isinstance(r.scopes, str) else []

@@ -79,4 +79,8 @@ def triage(cases: list[dict], client_salt: str, known_ids: dict[str, str],
                                  "response": text}) + "\n")
         results.append({"case_id": case["case_id"], "subject": case["subject"],
                         **parsed, "mode": "cloud"})
+    # Attach the rule IDs that produced each case so reports can give rule-specific guidance.
+    by_id = {c["case_id"]: c for c in cases}
+    for r in results:
+        r["rules"] = sorted({f["rule"] for f in by_id[r["case_id"]]["findings"]})
     return results

@@ -65,3 +65,23 @@ def test_redaction_removes_identifiers():
                         {"jsmith": "user", "DEV-LAPTOP-07": "host"})
     assert "jsmith" not in out["s"] and "10.0.1.19" not in out["s"]
     assert "DEV-LAPTOP-07" not in out["s"]
+
+
+def test_simulated_cloud_signin_burst_triggers_aut_rules():
+    """sim/generate_cloud_signin_burst.py is a labeled, synthetic sign-in log (not a live
+    attack run) built to exercise AUT-001 and AUT-004 end to end on Goal 2."""
+    import pandas as pd
+    from sim.generate_cloud_signin_burst import build
+    from datetime import datetime
+    from detectors import automation_speed
+
+    rows = build(datetime(2026, 1, 1, 0, 0, 0))
+    auth = pd.DataFrame(
+        [{"ts": r["createdDateTime"], "src_ip": r["ipAddress"],
+          "user": r["userPrincipalName"], "result": "success" if r["status"]["errorCode"] == 0 else "fail"}
+         for r in rows])
+    findings = automation_speed.detect_auth(auth)
+    rules = {f.rule for f in findings}
+    assert "AUT-001" in rules      # machine-speed burst
+    assert "AUT-004" in rules      # fail-then-success on carol.lab
+    assert "AUT-002" in rules    # 10 lab accounts, sprayed from a separate source IP

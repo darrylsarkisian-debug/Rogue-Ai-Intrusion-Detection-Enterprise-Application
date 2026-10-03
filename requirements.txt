@@ -1,3 +1,4 @@
 pandas>=2.0
 anthropic>=0.40      # only needed when the cloud triage step is enabled
 pytest>=8.0
+reportlab>=4.0     # client PDF findings report
